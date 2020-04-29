@@ -1,0 +1,26 @@
+<?php 
+	$link=@mysql_connect('localhost','root','');
+	$db=mysql_select_db("trabajo",$link);
+	if(!$conectar){
+		echo"No se puede conectar con el servidor";
+	}else{
+		$base=mysql_select_db('trabajo');
+		if(!$base){
+			echo"No se encontro la base de datos";
+		}
+	}
+	$nombre=$_POST['nombre'];
+	$correo=$_POST['email'];
+	$calle=$_POST['calle'];
+
+	$sql="INSERT INTO datos VALUES('$nombre',
+								   '$email',
+								   '$calle')";
+
+	$ejecutar=mysql_query($sql);
+	if(!$ejecutar){
+		echo"Hubo algun error";
+	}else{
+		echo"Datos guardados correctamente<br><a herf='index.html'>volver</a>";
+	}
+?>
